@@ -1,0 +1,25 @@
+<div
+  [class.is-mobile]="!(layoutService.isDesktop$ | async)"
+  [class.sidenav-collapsed]="layoutService.isSidebarCollapsed$ | async"
+  class="page-container horizontal-layout"
+>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      [fixedInViewport]="!(layoutService.isDesktop$ | async)"
+      [mode]="!(layoutService.isDesktop$ | async) ? 'over' : 'side'"
+      [opened]="layoutService.isDesktop$ | async"
+      class="sidenav"
+      #sidenav
+    >
+      <app-sidenav></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+      <mat-toolbar class="p-0">
+        <app-toolbar [sidenav]="sidenav"></app-toolbar>
+      </mat-toolbar>
+      <main class="content">
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,260 @@
+@import "./var.scss";
+
+.container {
+  padding-left: var(--padding-gutter);
+  padding-right: var(--padding-gutter);
+
+  @screen lg {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: theme("screens.lg");
+    width: 100%;
+  }
+}
+
+.card {
+  @apply rounded shadow-8 bg-card;
+}
+
+.avatar {
+  @apply h-10 w-10 object-cover rounded-full bg-hover;
+}
+
+.hidden-input {
+  @apply border-2 border-solid border-transparent py-1 px-3 rounded;
+
+  &:focus {
+    @apply border-primary outline-none;
+  }
+
+  &.empty {
+    @apply border-primary;
+  }
+}
+
+.list-item {
+  @apply rounded h-12 px-4 cursor-pointer;
+}
+
+.list-item:hover {
+  @apply bg-hover;
+}
+
+.textarea-clean {
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.bg-pattern {
+  background: linear-gradient(
+      135deg,
+      var(--background-base) 22px,
+      var(--background-hover) 22px,
+      var(--background-hover) 24px,
+      transparent 24px,
+      transparent 67px,
+      var(--background-hover) 67px,
+      var(--background-hover) 69px,
+      transparent 69px
+    ),
+    linear-gradient(
+        225deg,
+        var(--background-base) 22px,
+        var(--background-hover) 22px,
+        var(--background-hover) 24px,
+        transparent 24px,
+        transparent 67px,
+        var(--background-hover) 67px,
+        var(--background-hover) 69px,
+        transparent 69px
+      )
+      0 64px;
+  background-color: var(--background-base);
+  background-size: 64px 128px;
+}
+
+// Transitions
+
+.trans-ease-out {
+  transition: $swift-ease-out;
+}
+
+.trans-shadow {
+  transition: box-shadow $mat-elevation-transition-duration
+    $mat-elevation-transition-timing-function;
+}
+
+.vex-blogpost {
+  p {
+    @apply my-3;
+  }
+}
+
+// DX
+
+.dx-badge {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+.dx-subheader {
+  color: #5f6368;
+  font-size: 13px;
+}
+
+.dx-btn-add {
+  position: fixed !important;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+.dx-multiple-selection {
+  label {
+    margin-bottom: 0 !important;
+  }
+}
+
+
+
+
+
+
+
+
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
+}
+/* fallback */
+@font-face {
+  font-family: "Material Icons Outlined";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsoutlined/v14/gok-H7zzDkdnRel8-DQ6KAXJ69wP1tGnf4ZGhUce.woff2)
+    format("woff2");
+}
+/* fallback */
+@font-face {
+  font-family: "Material Icons Round";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconsround/v14/LDItaoyNOAY6Uewc665JcIzCKsKc_M9flwmP.woff2)
+    format("woff2");
+}
+/* sampled usage */
+@font-face {
+  font-family: "Material Icons Round";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/stats/Material+Icons+Round/normal/400);
+  unicode-range: U+20;
+}
+/* fallback */
+@font-face {
+  font-family: "Material Icons Sharp";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconssharp/v15/oPWQ_lt5nv4pWNJpghLP75WiFR4kLh3kvmvR.woff2)
+    format("woff2");
+}
+/* fallback */
+@font-face {
+  font-family: "Material Icons Two Tone";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialiconstwotone/v13/hESh6WRmNCxEqUmNyh3JDeGxjVVyMg4tHGctNCu0.woff2)
+    format("woff2");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-icons-outlined {
+  font-family: "Material Icons Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-icons-round {
+  font-family: "Material Icons Round";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-icons-sharp {
+  font-family: "Material Icons Sharp";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-icons-two-tone {
+  font-family: "Material Icons Two Tone";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}

@@ -1,0 +1,12 @@
+<div *ngIf="student" class="p-gutter">
+  <mat-card>
+    <mat-card-title>
+      {{ student.fullName }}
+    </mat-card-title>
+    <mat-card-content>
+      {{ student.email }} <br />
+      {{ student.birthDate | date }} <br />
+      {{ student.moyenne }}
+    </mat-card-content>
+  </mat-card>
+</div>

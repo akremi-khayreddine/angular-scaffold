@@ -1,0 +1,513 @@
+$mat-black: (
+  50: #f5f5f5,
+  100: #e9e9e9,
+  200: #d9d9d9,
+  300: #c4c4c4,
+  400: #9d9d9d,
+  500: #7b7b7b,
+  600: #555555,
+  700: #434343,
+  800: #262626,
+  900: #000000,
+  A100: #e9e9e9,
+  A200: #d9d9d9,
+  A400: #9d9d9d,
+  A700: #434343,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$my-app-success: mat-palette($mat-green);
+$my-app-danger: mat-palette($mat-red);
+$my-app-warning: mat-palette($mat-orange);
+
+/**
+* Colors
+*/
+.mat-red-color {
+  color: mat-color(mat-palette($mat-red));
+}
+.mat-pink-color {
+  color: mat-color(mat-palette($mat-pink)) !important;
+}
+.mat-purple-color {
+  color: mat-color(mat-palette($mat-purple)) !important;
+}
+.mat-deep-purple-color {
+  color: mat-color(mat-palette($mat-deep-purple)) !important;
+}
+.mat-indigo-color {
+  color: mat-color(mat-palette($mat-indigo)) !important;
+}
+.mat-blue-color {
+  color: mat-color(mat-palette($mat-blue)) !important;
+}
+.mat-light-blue-color {
+  color: mat-color(mat-palette($mat-light-blue)) !important;
+}
+.mat-cyan-color {
+  color: mat-color(mat-palette($mat-cyan)) !important;
+}
+.mat-teal-color {
+  color: mat-color(mat-palette($mat-teal)) !important;
+}
+.mat-green-color {
+  color: mat-color(mat-palette($mat-green)) !important;
+}
+.mat-light-green-color {
+  color: mat-color(mat-palette($mat-light-green)) !important;
+}
+.mat-lime-color {
+  color: mat-color(mat-palette($mat-lime)) !important;
+}
+.mat-yellow-color {
+  color: mat-color(mat-palette($mat-yellow)) !important;
+}
+.mat-amber-color {
+  color: mat-color(mat-palette($mat-amber)) !important;
+}
+.mat-orange-color {
+  color: mat-color(mat-palette($mat-orange)) !important;
+}
+.mat-deep-orange-color {
+  color: mat-color(mat-palette($mat-deep-orange)) !important;
+}
+.mat-brown-color {
+  color: mat-color(mat-palette($mat-brown)) !important;
+}
+.mat-grey-color {
+  color: mat-color(mat-palette($mat-grey)) !important;
+}
+.mat-blue-grey-color {
+  color: mat-color(mat-palette($mat-blue-grey)) !important;
+}
+.mat-black-color {
+  color: mat-color(mat-palette($mat-black, 900)) !important;
+}
+/**
+  * Background Colors
+  */
+.mat-red {
+  background-color: mat-color(mat-palette($mat-red)) !important;
+  color: white !important;
+}
+.mat-pink {
+  background-color: mat-color(mat-palette($mat-pink)) !important;
+  color: white !important;
+}
+.mat-purple {
+  background-color: mat-color(mat-palette($mat-purple)) !important;
+  color: white !important;
+}
+.mat-deep-purple {
+  background-color: mat-color(mat-palette($mat-deep-purple)) !important;
+  color: white !important;
+}
+.mat-indigo {
+  background-color: mat-color(mat-palette($mat-indigo)) !important;
+  color: white !important;
+}
+.mat-blue {
+  background-color: mat-color(mat-palette($mat-blue)) !important;
+  color: white !important;
+}
+.mat-light-blue {
+  background-color: mat-color(mat-palette($mat-light-blue)) !important;
+  color: white !important;
+}
+.mat-cyan {
+  background-color: mat-color(mat-palette($mat-cyan)) !important;
+  color: white !important;
+}
+.mat-teal {
+  background-color: mat-color(mat-palette($mat-teal)) !important;
+  color: white !important;
+}
+.mat-green {
+  background-color: mat-color(mat-palette($mat-green)) !important;
+  color: white !important;
+}
+.mat-light-green {
+  background-color: mat-color(mat-palette($mat-light-green)) !important;
+  color: white !important;
+}
+.mat-lime {
+  background-color: mat-color(mat-palette($mat-lime)) !important;
+  color: white !important;
+}
+.mat-yellow {
+  background-color: mat-color(mat-palette($mat-yellow)) !important;
+  color: white !important;
+}
+.mat-amber {
+  background-color: mat-color(mat-palette($mat-amber)) !important;
+  color: white !important;
+}
+.mat-orange {
+  background-color: mat-color(mat-palette($mat-orange)) !important;
+  color: white !important;
+}
+.mat-deep-orange {
+  background-color: mat-color(mat-palette($mat-deep-orange)) !important;
+  color: white !important;
+}
+.mat-brown {
+  background-color: mat-color(mat-palette($mat-brown)) !important;
+  color: white !important;
+}
+.mat-grey {
+  background-color: mat-color(mat-palette($mat-grey)) !important;
+  color: white !important;
+}
+.mat-blue-grey {
+  background-color: mat-color(mat-palette($mat-blue-grey)) !important;
+  color: white !important;
+}
+.mat-black {
+  background-color: mat-color(mat-palette($mat-black, 900)) !important;
+  color: white !important;
+}
+
+/**
+  * Background Colors
+  */
+.mat-red-50 {
+  background-color: mat-color(mat-palette($mat-red, 50)) !important;
+  color: mat-color(mat-palette($mat-red)) !important;
+}
+.mat-pink-50 {
+  background-color: mat-color(mat-palette($mat-pink, 50)) !important;
+  color: mat-color(mat-palette($mat-pink)) !important;
+}
+.mat-purple-50 {
+  background-color: mat-color(mat-palette($mat-purple, 50)) !important;
+  color: mat-color(mat-palette($mat-purple)) !important;
+}
+.mat-deep-purple-50 {
+  background-color: mat-color(mat-palette($mat-deep-purple, 50)) !important;
+  color: mat-color(mat-palette($mat-deep-purple)) !important;
+}
+.mat-indigo-50 {
+  background-color: mat-color(mat-palette($mat-indigo, 50)) !important;
+  color: mat-color(mat-palette($mat-indigo)) !important;
+}
+.mat-blue-50 {
+  background-color: mat-color(mat-palette($mat-blue, 50)) !important;
+  color: mat-color(mat-palette($mat-blue)) !important;
+}
+.mat-light-blue-50 {
+  background-color: mat-color(mat-palette($mat-light-blue, 50)) !important;
+  color: mat-color(mat-palette($mat-light-blue)) !important;
+}
+.mat-cyan-50 {
+  background-color: mat-color(mat-palette($mat-cyan, 50)) !important;
+  color: mat-color(mat-palette($mat-cyan)) !important;
+}
+.mat-teal-50 {
+  background-color: mat-color(mat-palette($mat-teal, 50)) !important;
+  color: mat-color(mat-palette($mat-teal)) !important;
+}
+.mat-green-50 {
+  background-color: mat-color(mat-palette($mat-green, 50)) !important;
+  color: mat-color(mat-palette($mat-green)) !important;
+}
+.mat-light-green-50 {
+  background-color: mat-color(mat-palette($mat-light-green, 50)) !important;
+  color: mat-color(mat-palette($mat-light-green)) !important;
+}
+.mat-lime-50 {
+  background-color: mat-color(mat-palette($mat-lime, 50)) !important;
+  color: mat-color(mat-palette($mat-lime)) !important;
+}
+.mat-yellow-50 {
+  background-color: mat-color(mat-palette($mat-yellow, 50)) !important;
+  color: mat-color(mat-palette($mat-yellow)) !important;
+}
+.mat-amber-50 {
+  background-color: mat-color(mat-palette($mat-amber, 50)) !important;
+  color: mat-color(mat-palette($mat-amber)) !important;
+}
+.mat-orange-50 {
+  background-color: mat-color(mat-palette($mat-orange, 50)) !important;
+  color: mat-color(mat-palette($mat-orange)) !important;
+}
+.mat-deep-orange-50 {
+  background-color: mat-color(mat-palette($mat-deep-orange, 50)) !important;
+  color: mat-color(mat-palette($mat-deep-orange)) !important;
+}
+.mat-brown-50 {
+  background-color: mat-color(mat-palette($mat-brown, 50)) !important;
+  color: mat-color(mat-palette($mat-brown)) !important;
+}
+.mat-grey-50 {
+  background-color: mat-color(mat-palette($mat-grey, 50)) !important;
+  color: mat-color(mat-palette($mat-grey)) !important;
+}
+.mat-blue-grey-50 {
+  background-color: mat-color(mat-palette($mat-blue-grey, 50)) !important;
+  color: mat-color(mat-palette($mat-blue-grey)) !important;
+}
+.mat-black-50 {
+  background-color: mat-color(mat-palette($mat-black, 50)) !important;
+  color: mat-color(mat-palette($mat-black)) !important;
+}
+/**
+  * Background Colors
+  */
+.mat-red-50:hover {
+  background-color: mat-color(mat-palette($mat-red, 100)) !important;
+  color: mat-color(mat-palette($mat-red)) !important;
+}
+.mat-pink-50:hover {
+  background-color: mat-color(mat-palette($mat-pink, 100)) !important;
+  color: mat-color(mat-palette($mat-pink)) !important;
+}
+.mat-purple-50:hover {
+  background-color: mat-color(mat-palette($mat-purple, 100)) !important;
+  color: mat-color(mat-palette($mat-purple)) !important;
+}
+.mat-deep-purple-50:hover {
+  background-color: mat-color(mat-palette($mat-deep-purple, 100)) !important;
+  color: mat-color(mat-palette($mat-deep-purple)) !important;
+}
+.mat-indigo-50:hover {
+  background-color: mat-color(mat-palette($mat-indigo, 100)) !important;
+  color: mat-color(mat-palette($mat-indigo)) !important;
+}
+.mat-blue-50:hover {
+  background-color: mat-color(mat-palette($mat-blue, 100)) !important;
+  color: mat-color(mat-palette($mat-blue)) !important;
+}
+.mat-light-blue-50:hover {
+  background-color: mat-color(mat-palette($mat-light-blue, 100)) !important;
+  color: mat-color(mat-palette($mat-light-blue)) !important;
+}
+.mat-cyan-50:hover {
+  background-color: mat-color(mat-palette($mat-cyan, 100)) !important;
+  color: mat-color(mat-palette($mat-cyan)) !important;
+}
+.mat-teal-50:hover {
+  background-color: mat-color(mat-palette($mat-teal, 100)) !important;
+  color: mat-color(mat-palette($mat-teal)) !important;
+}
+.mat-green-50:hover {
+  background-color: mat-color(mat-palette($mat-green, 100)) !important;
+  color: mat-color(mat-palette($mat-green)) !important;
+}
+.mat-light-green-50:hover {
+  background-color: mat-color(mat-palette($mat-light-green, 100)) !important;
+  color: mat-color(mat-palette($mat-light-green)) !important;
+}
+.mat-lime-50:hover {
+  background-color: mat-color(mat-palette($mat-lime, 100)) !important;
+  color: mat-color(mat-palette($mat-lime)) !important;
+}
+.mat-yellow-50:hover {
+  background-color: mat-color(mat-palette($mat-yellow, 100)) !important;
+  color: mat-color(mat-palette($mat-yellow)) !important;
+}
+.mat-amber-50:hover {
+  background-color: mat-color(mat-palette($mat-amber, 100)) !important;
+  color: mat-color(mat-palette($mat-amber)) !important;
+}
+.mat-orange-50:hover {
+  background-color: mat-color(mat-palette($mat-orange, 100)) !important;
+  color: mat-color(mat-palette($mat-orange)) !important;
+}
+.mat-deep-orange-50:hover {
+  background-color: mat-color(mat-palette($mat-deep-orange, 100)) !important;
+  color: mat-color(mat-palette($mat-deep-orange)) !important;
+}
+.mat-brown-50:hover {
+  background-color: mat-color(mat-palette($mat-brown, 100)) !important;
+  color: mat-color(mat-palette($mat-brown)) !important;
+}
+.mat-grey-50:hover {
+  background-color: mat-color(mat-palette($mat-grey, 100)) !important;
+  color: mat-color(mat-palette($mat-grey)) !important;
+}
+.mat-blue-grey-50:hover {
+  background-color: mat-color(mat-palette($mat-blue-grey, 100)) !important;
+  color: mat-color(mat-palette($mat-blue-grey)) !important;
+}
+.mat-black-50:hover {
+  background-color: mat-color(mat-palette($mat-black, 100)) !important;
+  color: mat-color(mat-palette($mat-black)) !important;
+}
+/**
+  * Background Colors
+  */
+.mat-red-100 {
+  background-color: mat-color(mat-palette($mat-red, 100)) !important;
+  color: mat-color(mat-palette($mat-red, 900)) !important;
+}
+.mat-pink-100 {
+  background-color: mat-color(mat-palette($mat-pink, 100)) !important;
+  color: mat-color(mat-palette($mat-pink, 900)) !important;
+}
+.mat-purple-100 {
+  background-color: mat-color(mat-palette($mat-purple, 100)) !important;
+  color: mat-color(mat-palette($mat-purple, 900)) !important;
+}
+.mat-deep-purple-100 {
+  background-color: mat-color(mat-palette($mat-deep-purple, 100)) !important;
+  color: mat-color(mat-palette($mat-deep-purple, 900)) !important;
+}
+.mat-indigo-100 {
+  background-color: mat-color(mat-palette($mat-indigo, 100)) !important;
+  color: mat-color(mat-palette($mat-indigo, 900)) !important;
+}
+.mat-blue-100 {
+  background-color: mat-color(mat-palette($mat-blue, 100)) !important;
+  color: mat-color(mat-palette($mat-blue, 900)) !important;
+}
+.mat-light-blue-100 {
+  background-color: mat-color(mat-palette($mat-light-blue, 100)) !important;
+  color: mat-color(mat-palette($mat-light-blue, 900)) !important;
+}
+.mat-cyan-100 {
+  background-color: mat-color(mat-palette($mat-cyan, 100)) !important;
+  color: mat-color(mat-palette($mat-cyan, 900)) !important;
+}
+.mat-teal-100 {
+  background-color: mat-color(mat-palette($mat-teal, 100)) !important;
+  color: mat-color(mat-palette($mat-teal, 900)) !important;
+}
+.mat-green-100 {
+  background-color: mat-color(mat-palette($mat-green, 100)) !important;
+  color: mat-color(mat-palette($mat-green, 900)) !important;
+}
+.mat-light-green-100 {
+  background-color: mat-color(mat-palette($mat-light-green, 100)) !important;
+  color: mat-color(mat-palette($mat-light-green, 900)) !important;
+}
+.mat-lime-100 {
+  background-color: mat-color(mat-palette($mat-lime, 100)) !important;
+  color: mat-color(mat-palette($mat-lime, 900)) !important;
+}
+.mat-yellow-100 {
+  background-color: mat-color(mat-palette($mat-yellow, 100)) !important;
+  color: mat-color(mat-palette($mat-yellow, 900)) !important;
+}
+.mat-amber-100 {
+  background-color: mat-color(mat-palette($mat-amber, 100)) !important;
+  color: mat-color(mat-palette($mat-amber, 900)) !important;
+}
+.mat-orange-100 {
+  background-color: mat-color(mat-palette($mat-orange, 100)) !important;
+  color: mat-color(mat-palette($mat-orange, 900)) !important;
+}
+.mat-deep-orange-100 {
+  background-color: mat-color(mat-palette($mat-deep-orange, 100)) !important;
+  color: mat-color(mat-palette($mat-deep-orange, 900)) !important;
+}
+.mat-brown-100 {
+  background-color: mat-color(mat-palette($mat-brown, 100)) !important;
+  color: mat-color(mat-palette($mat-brown, 900)) !important;
+}
+.mat-grey-100 {
+  background-color: mat-color(mat-palette($mat-grey, 100)) !important;
+  color: mat-color(mat-palette($mat-grey, 900)) !important;
+}
+.mat-blue-grey-100 {
+  background-color: mat-color(mat-palette($mat-blue-grey, 100)) !important;
+  color: mat-color(mat-palette($mat-blue-grey, 900)) !important;
+}
+.mat-black-100 {
+  background-color: mat-color(mat-palette($mat-black, 100)) !important;
+  color: mat-color(mat-palette($mat-black, 900)) !important;
+}
+/**
+  * Borders
+  */
+.mat-border-red {
+  border-color: mat-color(mat-palette($mat-red)) !important;
+}
+.mat-border-pink {
+  border-color: mat-color(mat-palette($mat-pink)) !important;
+}
+.mat-border-purple {
+  border-color: mat-color(mat-palette($mat-purple)) !important;
+}
+.mat-border-deep-purple {
+  background-color: mat-color(mat-palette($mat-deep-purple)) !important;
+}
+.mat-border-indigo {
+  border-color: mat-color(mat-palette($mat-indigo)) !important;
+}
+.mat-border-blue {
+  border-color: mat-color(mat-palette($mat-blue)) !important;
+}
+.mat-border-light-blue {
+  border-color: mat-color(mat-palette($mat-light-blue)) !important;
+}
+.mat-border-cyan {
+  border-color: mat-color(mat-palette($mat-cyan)) !important;
+}
+.mat-border-teal {
+  border-color: mat-color(mat-palette($mat-teal)) !important;
+}
+.mat-border-green {
+  border-color: mat-color(mat-palette($mat-green)) !important;
+}
+.mat-border-light-green {
+  border-color: mat-color(mat-palette($mat-light-green)) !important;
+}
+.mat-border-lime {
+  border-color: mat-color(mat-palette($mat-lime)) !important;
+}
+.mat-border-yellow {
+  border-color: mat-color(mat-palette($mat-yellow)) !important;
+}
+.mat-border-amber {
+  border-color: mat-color(mat-palette($mat-amber)) !important;
+}
+.mat-border-orange {
+  border-color: mat-color(mat-palette($mat-orange)) !important;
+}
+.mat-border-deep-orange {
+  border-color: mat-color(mat-palette($mat-deep-orange)) !important;
+}
+.mat-border-brown {
+  border-color: mat-color(mat-palette($mat-brown)) !important;
+}
+.mat-border-grey {
+  border-color: mat-color(mat-palette($mat-grey)) !important;
+}
+.mat-border-blue-grey {
+  border-color: mat-color(mat-palette($mat-blue-grey)) !important;
+}
+.mat-border-black {
+  border-color: mat-color(mat-palette($mat-black, 900)) !important;
+}
+/*
+  * Stasues
+  */
+.mat-success {
+  background-color: mat-color($my-app-success) !important;
+  color: white !important;
+}
+
+.mat-danger {
+  background-color: mat-color($my-app-danger) !important;
+  color: white !important;
+}
+
+.mat-warning {
+  background-color: mat-color($my-app-warning) !important;
+  color: white !important;
+}

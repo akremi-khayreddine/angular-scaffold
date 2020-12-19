@@ -1,0 +1,18 @@
+<div class="sidenav-header">
+  <button
+    fxHide.lt-md
+    fxShow.gt-md
+    (click)="layoutService.toggleSidebarCollapsed()"
+    mat-icon-button
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button
+    *ngIf="!(layoutService.isSidebarCollapsed$ | async)"
+    mat-button
+    color="primary"
+    class="ml-2"
+  >
+    My APP
+  </button>
+</div>

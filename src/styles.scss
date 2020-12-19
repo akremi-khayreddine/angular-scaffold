@@ -1,0 +1,15 @@
+@import "./app/layout/styles/tailwind.scss";
+@import "./app/layout/styles/core.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --sidenav-background: white;
+}

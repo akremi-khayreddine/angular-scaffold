@@ -1,0 +1,16 @@
+:host {
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  background: var(--toolbar-background);
+  height: var(--toolbar-height);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 1280px) {
+  :host {
+    width: var(--toolbar-width);
+  }
+}

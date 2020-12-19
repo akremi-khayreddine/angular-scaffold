@@ -1,0 +1,6 @@
+.app-sidenav {
+  width: var(--sidenav-width);
+  &.collapsed {
+    width: var(--sidenav-collapsed-width);
+  }
+}
