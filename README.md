@@ -1,15 +1,10 @@
-Angular un framework javascript Frontend
+# Frontend Dev with Angular
 
-1- Module
-2- Component
-3- Service
-4- Directives
-5- Pipe
+As a prerequisite you need:
 
-4- Routing (LazyLoading)
-5- Resolver
-6- Interceptors (Api sécuriser token) (les tokens)
-7- Guard (Autorisation)
+ 1. [Node.js](https://nodejs.org/en/)
+ 2. Angular CLI `npm i -g @angular/cli`
+ 3. [Visual Studio Code](https://code.visualstudio.com/) 
 
-8- State management
-9- Rxjs
+To get BING maps Key:
+https://www.bingmapsportal.com/

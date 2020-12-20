@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class LayoutService {
-  isSidebarCollapsed$ = new BehaviorSubject(false);
+  isSidebarCollapsed$ = new BehaviorSubject(true);
   isDesktop$ = this.breakpointObserver
     .observe(`(min-width: 1280px)`)
     .pipe(map((state) => state.matches));

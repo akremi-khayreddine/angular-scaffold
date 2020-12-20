@@ -2,7 +2,7 @@
   <button fxShow.lt-md fxHide.gt-md (click)="sidenav.toggle()" mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
-  <button mat-button color="primary" fxShow.lt-md fxHide.gt-md class="ml-2">
+  <button mat-button color="primary" *ngIf="layoutService.isSidebarCollapsed$.value">
     My APP
   </button>
 </div>

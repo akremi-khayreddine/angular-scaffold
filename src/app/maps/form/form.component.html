@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>
+  {{ description ? "Description" : "Ajouter" }}
+</h1>
+
+<mat-dialog-content *ngIf="!description">
+  <mat-form-field class="w-full">
+    <mat-label>Description</mat-label>
+    <input matInput [formControl]="descriptionControl" />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="description">
+  <p>
+    {{ description }}
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions *ngIf="!description" class="flex justify-end">
+  <button (click)="save()" color="primary" mat-raised-button>
+    Enregistrer
+  </button>
+</mat-dialog-actions>
