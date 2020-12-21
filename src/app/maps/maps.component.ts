@@ -9,6 +9,7 @@ import VectorLayer from 'ol/layer/Vector';
 
 import VectorSource from 'ol/source/Vector';
 import BingMaps from 'ol/source/BingMaps';
+import OSM from 'ol/source/OSM';
 
 import Draw from 'ol/interaction/Draw';
 import Select from 'ol/interaction/Select';
@@ -17,6 +18,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from './form/form.component';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { GeoserverService } from '../core/services/geoserver.service';
+
+import proj4 from 'proj4';
+import { register } from 'ol/proj/proj4';
+
+proj4.defs('EPSG:32632', '+proj=utm +zone=32 +datum=WGS84 +units=m +no_defs');
+proj4.defs(
+  'EPSG:22332',
+  '+proj=utm +zone=32 +a=6378249.2 +b=6356515 +towgs84=-263,6,431,0,0,0,0 +units=m +no_defs'
+);
+register(proj4);
 
 export interface OurFeature {
   feature: Feature | undefined;
@@ -42,11 +54,17 @@ export interface CurrentInteraction {
 export class MapsComponent implements OnInit {
   map: OlMap | undefined;
 
-  baseLayer = new Tile({
+  imagerySets = ['AerialWithLabelsOnDemand', 'Road'];
+
+  bingBaseLayer = new Tile({
     source: new BingMaps({
       key: 'AnSCOOEsLCAPPbQUJI2z5HWumUX4pdaIPAds92fkJ7dSy6BueeHISFZ9Xq_NvvbP',
-      imagerySet: 'AerialWithLabelsOnDemand',
+      imagerySet: this.imagerySets[0],
     }),
+  });
+
+  osmBaseLayer = new Tile({
+    source: new OSM(),
   });
 
   poligonLayer = new VectorLayer({
@@ -72,7 +90,7 @@ export class MapsComponent implements OnInit {
 
   view = new View({
     center: [1132153.0768140366, 4415740.73565199],
-    zoom: 18,
+    zoom: 7,
   });
 
   selectInteraction = new Select();
@@ -106,12 +124,12 @@ export class MapsComponent implements OnInit {
     );
   }
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private geoserver: GeoserverService) {}
 
   ngOnInit(): void {
     this.map = new OlMap({
       target: 'map',
-      layers: [this.baseLayer],
+      layers: [this.bingBaseLayer, this.geoserver.createWFSLayer('Mhamdia')],
       view: this.view,
     });
     this.activatedLayers.subscribe((layers) => {
