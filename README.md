@@ -45,10 +45,10 @@ https://www.bingmapsportal.com/
 ```
 
 1. Configurer et afficher une Map dans notre interface Web.
-  a Comment utiliser une library (OpenLayers)
-  b- Base layers (OSM, Bing)
-  c- Projection
-  d- Comment centrer le vue d'une map en se basant sur des données d'une couche
+  a. Comment utiliser une library (OpenLayers)
+  b. Base layers (OSM, Bing)
+  c. Projection
+  d. Comment centrer le vue d'une map en se basant sur des données d'une couche
 2. Collecter les données (Les couches `Layers` d'un espace de travail `Worjspace`) de geoserver api.
   a- Geoserver API
   b- Angular HTTP
