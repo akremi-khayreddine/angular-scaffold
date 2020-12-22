@@ -14,6 +14,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatMenuModule} from '@angular/material/menu';
 
 const MATERIALS = [
   MatButtonModule,
@@ -23,6 +24,7 @@ const MATERIALS = [
   MatInputModule,
   FlexLayoutModule,
   MatCheckboxModule,
+  MatMenuModule
 ];
 
 const FORMS = [FormsModule, ReactiveFormsModule];
@@ -30,5 +32,6 @@ const FORMS = [FormsModule, ReactiveFormsModule];
 @NgModule({
   declarations: [MapsComponent, FormComponent],
   imports: [CommonModule, MapsRoutingModule, ...MATERIALS, ...FORMS],
+  providers: [],
 })
 export class MapsModule {}

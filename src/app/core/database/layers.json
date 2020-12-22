@@ -1,0 +1,18 @@
+{
+  "layers": [
+    {
+      "name": "Mhamdia",
+      "style": {
+        "fill": "red",
+        "stroke": "black"
+      }
+    },
+    {
+      "name": "Fouchana",
+      "style": {
+        "fill": "green",
+        "stroke": "black"
+      }
+    }
+  ]
+}

@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
+import { mapOptions, MAP_OPTIONS } from './core/services/map-options';
 
 const MATERIALS = [MatToolbarModule, MatSidenavModule];
 const LAYOUT = [LayoutModule];
@@ -28,7 +29,7 @@ const LAYOUT = [LayoutModule];
     ...MATERIALS,
     ...LAYOUT,
   ],
-  providers: [],
+  providers: [{ provide: MAP_OPTIONS, useValue: mapOptions }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

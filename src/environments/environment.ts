@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  geoserver: {
+    url: 'http://localhost:8080/geoserver',
+    workspace: 'urbupdate',
+    projection: 'EPSG:32632',
+  },
 };
 
 /*
