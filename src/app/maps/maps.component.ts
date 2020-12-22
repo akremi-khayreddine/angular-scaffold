@@ -6,14 +6,13 @@ import VectorLayer from 'ol/layer/Vector';
 
 import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from './form/form.component';
+
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { transform } from 'ol/proj';
-import { GeoserverService, OurLayer } from '../core/services/geoserver.service';
 
+import { GeoserverService, OurLayer } from '../core/services/geoserver.service';
 import { MapService } from '../core/services/map.service';
 import { LayersService } from '../core/services/layers.service';
-import { environment } from 'src/environments/environment';
 
 export interface CurrentInteraction {
   key: string | null;
@@ -63,15 +62,8 @@ export class MapsComponent implements OnInit {
         this.map = this.mapService.createMap();
         const defaultLayer = layers.find(
           (l) => l.name === 'batdf_Project2_Clip'
-        );
-        const bounding = defaultLayer?.value.nativeBoundingBox;
-        const x = bounding.maxx - (bounding.maxx - bounding.minx) / 2;
-        const y = bounding.maxy - (bounding.maxy - bounding.miny) / 2;
-        this.map
-          ?.getView()
-          .setCenter(
-            transform([x, y], environment.geoserver.projection, 'EPSG:3857')
-          );
+        ) as OurLayer;
+        this.mapService.setCenterBasedOnLayer(defaultLayer);
         layers.forEach((layer) => {
           this.layers$.next([...this.layers$.value, layer]);
         });

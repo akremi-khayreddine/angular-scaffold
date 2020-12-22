@@ -10,6 +10,8 @@ import Draw from 'ol/interaction/Draw';
 import { OurLayer } from './geoserver.service';
 import VectorSource from 'ol/source/Vector';
 import Select from 'ol/interaction/Select';
+import { environment } from 'src/environments/environment';
+import { transform } from 'ol/proj';
 
 @Injectable({
   providedIn: 'root',
@@ -46,5 +48,16 @@ export class MapService {
         color: options.stroke,
       }),
     });
+  }
+
+  setCenterBasedOnLayer(layer: OurLayer) {
+    const bounding = layer.value.nativeBoundingBox;
+    const x = bounding.maxx - (bounding.maxx - bounding.minx) / 2;
+    const y = bounding.maxy - (bounding.maxy - bounding.miny) / 2;
+    this.map
+      ?.getView()
+      .setCenter(
+        transform([x, y], environment.geoserver.projection, 'EPSG:3857')
+      );
   }
 }
