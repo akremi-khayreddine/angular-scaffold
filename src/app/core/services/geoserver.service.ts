@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import GeoJSON from 'ol/format/GeoJSON';
+
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import { all } from 'ol/loadingstrategy';
@@ -7,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import GeometryType from 'ol/geom/GeometryType';
 import Style from 'ol/style/Style';
 import { environment } from 'src/environments/environment';
+import Fill from 'ol/style/Fill';
 
 export interface OurLayer {
   geoGSON: GeoJSON | null;
@@ -23,63 +25,79 @@ export interface OurLayer {
   providedIn: 'root',
 })
 export class GeoserverService {
+  private url = environment.geoserver.url;
+  private workspace = environment.geoserver.workspace;
+  private mapProjection = environment.geoserver.mapProjection;
+
   layers: {
     [key: string]: OurLayer;
   } = {};
 
+  /**
+   * Hack
+   */
+  styles: { [key: string]: Style } = {
+    polygon: new Style({
+      fill: new Fill({
+        color: 'rgba(42, 40, 175, 0.5)',
+      }),
+    }),
+    green: new Style({
+      fill: new Fill({
+        color: 'rgba(43, 147, 41, 0.5)',
+      }),
+    }),
+  };
+
   createGeoJSON(layerName: string) {
     const geoJSON = new GeoJSON({
-      geometryName: `${environment.geoserver.workspace}:${layerName}`,
+      geometryName: `${this.workspace}:${layerName}`,
     });
     this.layers[layerName].geoGSON = geoJSON;
     return geoJSON;
   }
 
-  createWFSSource(layerName: string) {
+  createWFSSource(layer: any) {
     const source = new VectorSource({
       strategy: all,
-      format: this.createGeoJSON(layerName),
+      format: this.createGeoJSON(layer.name),
       loader: (extent) => {
         return this.http
-          .get(
-            `${environment.geoserver.url}/${environment.geoserver.workspace}/wfs`,
-            {
-              params: {
-                service: 'WFS',
-                version: '2.0.0',
-                outputformat: 'application/json',
-                request: 'GetFeature',
-                typeName: `${environment.geoserver.workspace}:${layerName}`,
-                srsname: environment.geoserver.projection,
-              },
-            }
-          )
+          .get(`${this.url}/${this.workspace}/wfs`, {
+            params: {
+              service: 'WFS',
+              version: '2.0.0',
+              outputformat: 'application/json',
+              request: 'GetFeature',
+              typeName: `${this.workspace}:${layer.name}`,
+              srsname: layer.srs,
+            },
+          })
           .subscribe((result) => {
-            const features = this.createGeoJSON(layerName).readFeatures(
-              result,
-              {
-                dataProjection: environment.geoserver.projection,
-                featureProjection: 'EPSG:3857',
-              }
-            );
+            const features = this.createGeoJSON(
+              layer.name as string
+            ).readFeatures(result, {
+              dataProjection: layer.srs,
+              featureProjection: this.mapProjection,
+            });
             source.addFeatures(features);
           });
       },
     });
-    this.layers[layerName].source = source;
+    this.layers[layer.name as string].source = source;
     return source;
   }
 
-  createWFSLayer(layerName: string, options?: { style?: Style }) {
-    if (!this.layers[layerName]) {
-      this.createLayer(layerName);
+  createWFSLayer(layer: any, options?: { style?: Style }) {
+    if (!this.layers[layer.name]) {
+      this.createLayer(layer.name);
     }
-    const layer = new VectorLayer({
-      source: this.createWFSSource(layerName),
+    const vlayer = new VectorLayer({
+      source: this.createWFSSource(layer),
       style: options?.style,
     });
-    this.layers[layerName].layer = layer;
-    return this.layers[layerName];
+    this.layers[layer.name].layer = vlayer;
+    return this.layers[layer.name];
   }
 
   private createLayer(layerName: string) {
@@ -97,7 +115,7 @@ export class GeoserverService {
 
   init(layers: any[]): OurLayer[] {
     layers.forEach((layer) => {
-      this.createWFSLayer(layer.name);
+      this.createWFSLayer(layer);
       this.layers[layer.name].value = layer;
       this.layers[layer.name].name = layer.name;
     });

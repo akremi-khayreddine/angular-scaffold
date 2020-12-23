@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-import { Feature, Map as OlMap } from 'ol';
+import { Feature, Map as OlMap, Overlay } from 'ol';
 import GeometryType from 'ol/geom/GeometryType';
 import VectorLayer from 'ol/layer/Vector';
 
@@ -36,6 +36,8 @@ export class MapsComponent implements OnInit {
     value: null,
   };
 
+  @ViewChild('popup') popup: ElementRef | undefined;
+
   get activatedLayers() {
     return this.layers$.pipe(
       map((layers) => {
@@ -61,7 +63,7 @@ export class MapsComponent implements OnInit {
         this.apiLayers = layers;
         this.map = this.mapService.createMap();
         const defaultLayer = layers.find(
-          (l) => l.name === 'batdf_Project2_Clip'
+          (l) => l.name === 'gis.osm_buildings_a_free_1'
         ) as OurLayer;
         this.mapService.setCenterBasedOnLayer(defaultLayer);
         layers.forEach((layer) => {
@@ -89,7 +91,15 @@ export class MapsComponent implements OnInit {
         const layer = this.apiLayers.find(
           (l) => l.name === layerName
         ) as OurLayer;
+        /*
+        this.mapService.createOverlay(this.popup as ElementRef, feature);
+        this.mapService.popupOverlay?.setPosition(
+          event.mapBrowserEvent.coordinate
+        );
+        */
         this.openForm({ layer, feature, mode: 'show' });
+      } else {
+        this.mapService.removeOverlay();
       }
     });
     this.currentInteraction = { key: 'select', value: interaction };
@@ -97,6 +107,7 @@ export class MapsComponent implements OnInit {
   }
 
   onDelete() {
+    this.mapService.removeOverlay();
     this.removeCurrentInteraction();
     const interaction = this.mapService.createSelectInteraction();
     interaction.on('select', (event) => {
@@ -117,6 +128,7 @@ export class MapsComponent implements OnInit {
   }
 
   onDrawPolygon(layer: OurLayer) {
+    this.mapService.removeOverlay();
     this.removeCurrentInteraction();
     const interaction = this.mapService.createDrawInteraction(
       GeometryType.MULTI_POLYGON,
@@ -130,6 +142,7 @@ export class MapsComponent implements OnInit {
   }
 
   onDrawPoint(layer: OurLayer) {
+    this.mapService.removeOverlay();
     this.removeCurrentInteraction();
     const interaction = this.mapService.createDrawInteraction(
       GeometryType.POINT,

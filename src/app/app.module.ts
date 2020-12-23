@@ -15,6 +15,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { mapOptions, MAP_OPTIONS } from './core/services/map-options';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 const MATERIALS = [MatToolbarModule, MatSidenavModule];
 const LAYOUT = [LayoutModule];
@@ -28,6 +29,7 @@ const LAYOUT = [LayoutModule];
     FlexLayoutModule,
     ...MATERIALS,
     ...LAYOUT,
+    OverlayModule
   ],
   providers: [{ provide: MAP_OPTIONS, useValue: mapOptions }],
   bootstrap: [AppComponent],

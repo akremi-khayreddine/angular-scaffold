@@ -33,7 +33,7 @@ export const baseLayers = [bingBaseLayer, osmBaseLayer];
 
 export const view = new View({
   center: [0, 0],
-  zoom: 18,
+  zoom: 6,
 }); 
 
 export const mapOptions: MapOptions = {

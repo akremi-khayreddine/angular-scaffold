@@ -6,6 +6,11 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./maps/maps.module').then((m) => m.MapsModule),
   },
+  {
+    path: 'leaflet',
+    loadChildren: () =>
+      import('./leaflet/leaflet.module').then((m) => m.LeafletModule),
+  },
 ];
 
 @NgModule({

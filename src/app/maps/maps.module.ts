@@ -15,6 +15,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { FeaturePopupComponent } from './feature-popup/feature-popup.component';
 
 const MATERIALS = [
   MatButtonModule,
@@ -30,7 +32,7 @@ const MATERIALS = [
 const FORMS = [FormsModule, ReactiveFormsModule];
 
 @NgModule({
-  declarations: [MapsComponent, FormComponent],
+  declarations: [MapsComponent, FormComponent, FeaturePopupComponent],
   imports: [CommonModule, MapsRoutingModule, ...MATERIALS, ...FORMS],
   providers: [],
 })

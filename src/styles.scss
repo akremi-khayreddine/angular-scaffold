@@ -1,5 +1,8 @@
 @import "./app/layout/styles/tailwind.scss";
 @import "./app/layout/styles/core.scss";
+@import "~ol/ol.css";
+@import '~leaflet/dist/leaflet.css';
+@import '~leaflet-draw/dist/leaflet.draw.css';
 
 html,
 body {

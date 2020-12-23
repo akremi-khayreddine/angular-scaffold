@@ -12,18 +12,19 @@ import { OurLayer } from './geoserver.service';
   providedIn: 'root',
 })
 export class LayersService {
+  private url = environment.geoserver.url;
+  private workspace = environment.geoserver.workspace;
+  private mapProjection = environment.geoserver.mapProjection;
+
   constructor(private http: HttpClient) {}
 
   list() {
     return this.http
-      .get(
-        `${environment.geoserver.url}/rest/workspaces/${environment.geoserver.workspace}/layers.json`,
-        {
-          headers: {
-            Authorization: 'Basic ' + btoa('admin:geoserver'),
-          },
-        }
-      )
+      .get(`${this.url}/rest/workspaces/${this.workspace}/layers.json`, {
+        headers: {
+          Authorization: 'Basic ' + btoa('admin:geoserver'),
+        },
+      })
       .pipe(map((result: any) => (result.layers ? result.layers.layer : [])));
   }
 
@@ -39,10 +40,20 @@ export class LayersService {
     );
   }
 
+  getStyle(name: string) {
+    return this.http
+      .get(`${this.url}/rest/styles/${name}.json`, {
+        headers: {
+          Authorization: 'Basic ' + btoa('admin:geoserver'),
+        },
+      })
+      .pipe(map((result: any) => result.style));
+  }
+
   find(name: string) {
     return this.http
       .get(
-        `${environment.geoserver.url}/rest/workspaces/${environment.geoserver.workspace}/layers/${name}.json`,
+        `${this.url}/rest/workspaces/${this.workspace}/layers/${name}.json`,
         {
           headers: {
             Authorization: 'Basic ' + btoa('admin:geoserver'),
@@ -55,7 +66,7 @@ export class LayersService {
   featureTypes(name: string) {
     return this.http
       .get(
-        `${environment.geoserver.url}/rest/workspaces/${environment.geoserver.workspace}/datastores/${name}/featuretypes/${name}.json`,
+        `${this.url}/rest/workspaces/${this.workspace}/datastores/${name}/featuretypes/${name}.json`,
         {
           headers: {
             Authorization: 'Basic ' + btoa('admin:geoserver'),
@@ -70,20 +81,20 @@ export class LayersService {
     const fid = layer.source?.getFeatures().length;
     newFeature.setId(fid);
     const coords = (feature.getGeometry() as any).getCoordinates();
-    const polyCoords = this.transformCoords(coords);
+    const polyCoords = this.transformCoords(layer, coords);
     (newFeature.getGeometry() as any).setCoordinates([[polyCoords]]);
     const wfsFormat = new WFSFormat({
-      featureNS: environment.geoserver.workspace,
-      featureType: `${environment.geoserver.workspace}:${layer.name}`,
+      featureNS: this.workspace,
+      featureType: `${this.workspace}:${layer.name}`,
     });
     const node = wfsFormat.writeTransaction([newFeature], [], [], {
-      featureNS: environment.geoserver.workspace,
+      featureNS: this.workspace,
       featurePrefix: '',
       featureType: layer.name as string,
       nativeElements: [],
     });
     return this.http.post(
-      `${environment.geoserver.url}/${environment.geoserver.workspace}/wfs`,
+      `${this.url}/${this.workspace}/wfs`,
       new XMLSerializer().serializeToString(node),
       {
         headers: {
@@ -96,23 +107,23 @@ export class LayersService {
     );
   }
 
-  updateFeature(layer: any, feature: Feature) {
+  updateFeature(layer: OurLayer, feature: Feature) {
     const newFeature = feature.clone();
     const coords = (feature.getGeometry() as any).getCoordinates();
-    const polyCoords = this.transformCoords(coords);
+    const polyCoords = this.transformCoords(layer, coords);
     (newFeature.getGeometry() as any).setCoordinates([[polyCoords]]);
     const wfsFormat = new WFSFormat({
-      featureNS: environment.geoserver.workspace,
-      featureType: `${environment.geoserver.workspace}:${layer.name}`,
+      featureNS: this.workspace,
+      featureType: `${this.workspace}:${layer.name}`,
     });
     const node = wfsFormat.writeTransaction([], [newFeature], [], {
-      featureNS: environment.geoserver.workspace,
+      featureNS: this.workspace,
       featurePrefix: '',
-      featureType: `${environment.geoserver.workspace}:${layer.name}`,
+      featureType: `${this.workspace}:${layer.name}`,
       nativeElements: [],
     });
     return this.http.post(
-      `${environment.geoserver.url}/${environment.geoserver.workspace}/wfs`,
+      `${this.url}/${this.workspace}/wfs`,
       new XMLSerializer().serializeToString(node),
       {
         headers: {
@@ -127,17 +138,17 @@ export class LayersService {
 
   deleteFeature(layer: OurLayer, feature: Feature) {
     const wfsFormat = new WFSFormat({
-      featureNS: environment.geoserver.workspace,
-      featureType: `${environment.geoserver.workspace}:${layer.name}`,
+      featureNS: this.workspace,
+      featureType: `${this.workspace}:${layer.name}`,
     });
     const node = wfsFormat.writeTransaction([], [], [feature], {
-      featureNS: environment.geoserver.workspace,
+      featureNS: this.workspace,
       featurePrefix: '',
       featureType: layer.name as string,
       nativeElements: [],
     });
     return this.http.post(
-      `${environment.geoserver.url}/${environment.geoserver.workspace}/wfs`,
+      `${this.url}/${this.workspace}/wfs`,
       new XMLSerializer().serializeToString(node),
       {
         headers: {
@@ -150,15 +161,15 @@ export class LayersService {
     );
   }
 
-  private transformCoords(coords: any) {
+  private transformCoords(layer: OurLayer, coords: any) {
     var polyCoords = [];
     for (var i in coords[0][0]) {
       var c = coords[0][0][i];
       polyCoords.push(
         transform(
           [parseFloat(c[0]), parseFloat(c[1])],
-          'EPSG:3857',
-          environment.geoserver.projection
+          this.mapProjection,
+          layer.value.srs
         )
       );
     }

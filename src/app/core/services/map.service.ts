@@ -1,5 +1,5 @@
-import { Inject, Injectable } from '@angular/core';
-import { Map as OlMap } from 'ol';
+import { ElementRef, Inject, Injectable } from '@angular/core';
+import { Feature, Map as OlMap, Overlay } from 'ol';
 import { MapOptions } from 'ol/PluggableMap';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
@@ -18,6 +18,8 @@ import { transform } from 'ol/proj';
 })
 export class MapService {
   private map: OlMap | undefined;
+  public popupOverlay: Overlay | undefined;
+  private mapProjection = environment.geoserver.mapProjection;
   constructor(@Inject(MAP_OPTIONS) private options: MapOptions) {}
 
   createMap(): OlMap | undefined {
@@ -50,14 +52,39 @@ export class MapService {
     });
   }
 
+  createOverlay(element: ElementRef, feature: Feature) {
+    this.removeOverlay();
+    element.nativeElement.innerHTML = this.generateHTML(feature);
+    this.popupOverlay = new Overlay({
+      element: element.nativeElement,
+      offset: [9, 9],
+    });
+    this.map?.addOverlay(this.popupOverlay);
+  }
+
+  generateHTML(feature: Feature) {
+    let html = '';
+    Object.keys(feature.getProperties()).forEach((key) => {
+      if (key !== 'the_geom') {
+        const value = feature.getProperties()[key];
+        html += `<b>${key}:</b> ${value} <br/>`;
+      }
+    });
+    return html;
+  }
+
+  removeOverlay() {
+    if (this.popupOverlay) {
+      this.map?.removeOverlay(this.popupOverlay as Overlay);
+    }
+  }
+
   setCenterBasedOnLayer(layer: OurLayer) {
     const bounding = layer.value.nativeBoundingBox;
     const x = bounding.maxx - (bounding.maxx - bounding.minx) / 2;
     const y = bounding.maxy - (bounding.maxy - bounding.miny) / 2;
     this.map
       ?.getView()
-      .setCenter(
-        transform([x, y], environment.geoserver.projection, 'EPSG:3857')
-      );
+      .setCenter(transform([x, y], layer.value.srs, this.mapProjection));
   }
 }

@@ -11,3 +11,13 @@ button.active {
   border-radius: 1rem;
   opacity: 0.8;
 }
+
+.popup {
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 5px;
+  width: 300px;
+  overflow: hidden;
+  white-space: normal;
+}

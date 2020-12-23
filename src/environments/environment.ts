@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   geoserver: {
     url: 'http://localhost:8080/geoserver',
-    workspace: 'urbupdate',
-    projection: 'EPSG:32632',
+    workspace: 'test',
+    mapProjection: 'EPSG:3857',
   },
 };
 
