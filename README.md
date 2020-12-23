@@ -45,13 +45,13 @@ ng g c maps
 ng g s core/services/maps
 ```
 
-7. Ouvrir src/app/maps/maps.component.html
+7. Ouvrir `src/app/maps/maps.component.html`
 
 - Ajouter le code Html de la map
 - Ajouter le code Html des buttons d'interaction
 - Ajouter le code Html de la légende
 
-8. Ouvrir src/app/maps/maps.component.ts
+8. Ouvrir `src/app/maps/maps.component.ts`
 
 - Ajouter le code pour afficher notre map en utilisant le service qu'on créer
 
@@ -59,18 +59,18 @@ ng g s core/services/maps
 
 - Comment collecter les couches d'un espace de travail
 
-10. Revenir vers le fichier src/app/maps/maps.component.ts
+10. Revenir vers le fichier `src/app/maps/maps.component.ts`
 
 - Ajouter le code pour collecter les couches en utilisant le service qu'on créer
 - Afficher les couches dans la légende dans un premier temps (puis on va ajouter une option pour activer/désactiver une couche)
 
 11. Expliquer le code de la service qui permet de transformer les couches collecter de l'api en des couches compréhensible par notre Map.
 
-- Comment créer un ol/layer/Vector (Couche à ajouter aprés dans la map)
-- Comment créer un ol/source/Vector (Source de données de cette couche)
+- Comment créer un `ol/layer/Vector` (Couche à ajouter aprés dans la map)
+- Comment créer un `ol/source/Vector` (Source de données de cette couche)
 - Comment utiliser OpenLayers + Geoserver (Le service WFS) pour Collecter les Features d'une couche dans la partie `Création de source`
 
-12. Revenir vers le fichier src/app/maps/maps.component.ts
+12. Revenir vers le fichier `src/app/maps/maps.component.ts`
 
 - Afficher les couches créer par le service expliqué précédement dans la map
 - Centrer la map en se basant sur une couche par défaut
