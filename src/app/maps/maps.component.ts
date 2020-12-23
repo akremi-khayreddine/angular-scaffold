@@ -13,6 +13,7 @@ import { map } from 'rxjs/operators';
 import { GeoserverService, OurLayer } from '../core/services/geoserver.service';
 import { MapService } from '../core/services/map.service';
 import { LayersService } from '../core/services/layers.service';
+import { FeaturesService } from '../core/services/features.service';
 
 export interface CurrentInteraction {
   key: string | null;
@@ -52,7 +53,8 @@ export class MapsComponent implements OnInit {
     private dialog: MatDialog,
     private geoserver: GeoserverService,
     public mapService: MapService,
-    private layersService: LayersService
+    private layersService: LayersService,
+    private featuresService: FeaturesService
   ) {}
 
   ngOnInit(): void {
@@ -118,7 +120,7 @@ export class MapsComponent implements OnInit {
         const layer = this.apiLayers.find(
           (l) => l.name === layerName
         ) as OurLayer;
-        this.layersService.deleteFeature(layer, feature).subscribe(() => {
+        this.featuresService.delete(layer, feature).subscribe(() => {
           layer.source?.refresh();
         });
       }
@@ -184,8 +186,8 @@ export class MapsComponent implements OnInit {
     ref.afterClosed().subscribe((result) => {
       if (result) {
         options.feature.setProperties(result.form);
-        this.layersService
-          .addFeature(options.layer, options.feature)
+        this.featuresService
+          .add(options.layer, options.feature)
           .subscribe((result) => {
             options.layer.source?.refresh();
           });
