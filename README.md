@@ -7,10 +7,84 @@ As a prerequisite you need:
 3.  [Visual Studio Code](https://code.visualstudio.com/)
 4.  [Geoserver](https://geoserver.org/)
 
-To get BING maps Key:
-https://www.bingmapsportal.com/
+# Etapes:
 
-- Enable cross-origin in geoserver (A resource makes a cross-origin HTTP request when it requests a resource from a different domain, protocol, or port to its own) in our case (on localhost) our application will run on port 4200 but geoserver run on port 8080
+1. Installer la librairie [OpenLayers](https://github.com/openlayers/openlayers):
+
+```
+npm install ol
+```
+
+2. Créer un fichier `src/app/core/config/map-config.ts` pour mettre les configurations d'une map.
+3. Importer ce que nous avons besoin pour créer une map de la librairie OpenLayers et créer les configurations au fur et à mesure.
+4. Créer un module Angular avec angular-cli
+
+- On va expliquer aprés (Au cours de la formation) que ce qu'un module Angular
+
+```
+ng g m maps
+```
+
+5. Créer un composant Angular avec angular-cli dans le meme dossier que le module créer précédement
+
+- On va expliquer aprés que ce qu'un composant Angular
+
+```
+ng g c maps
+```
+
+6. Créer une service Angular pour gérer notre map
+
+- Importer la configuration
+- Cette service doit contenir tous le code pour
+  - Créer une map
+  - Centrer dynamiquement une map
+  - Ajouter des interactions
+
+```
+ng g s core/services/maps
+```
+
+7. Ouvrir src/app/maps/maps.component.html
+
+- Ajouter le code Html de la map
+- Ajouter le code Html des buttons d'interaction
+- Ajouter le code Html de la légende
+
+8. Ouvrir src/app/maps/maps.component.ts
+
+- Ajouter le code pour afficher notre map en utilisant le service qu'on créer
+
+9. Expliquer le code de la service qui permet communiquer avec l'api Geoserver
+
+- Comment collecter les couches d'un espace de travail
+
+10. Revenir vers le fichier src/app/maps/maps.component.ts
+
+- Ajouter le code pour collecter les couches en utilisant le service qu'on créer
+- Afficher les couches dans la légende dans un premier temps (puis on va ajouter une option pour activer/désactiver une couche)
+
+11. Expliquer le code de la service qui permet de transformer les couches collecter de l'api en des couches compréhensible par notre Map.
+
+- Comment créer un ol/layer/Vector (Couche à ajouter aprés dans la map)
+- Comment créer un ol/source/Vector (Source de données de cette couche)
+- Comment utiliser OpenLayers + Geoserver (Le service WFS) pour Collecter les Features d'une couche dans la partie `Création de source`
+
+12. Revenir vers le fichier src/app/maps/maps.component.ts
+
+- Afficher les couches créer par le service expliqué précédement dans la map
+- Centrer la map en se basant sur une couche par défaut
+
+13. Expliquer le code qui permet de créer des interactions
+
+- Ajouter les listners des buttons pour appeler les interactions
+- Implémenter l'interaction Select qui permet d'afficher les détails d'une Feature sélectionnée
+- On va expliquer au cours de la formation comment implémenter d'autres interactions qui permet de déssiner une Feature et stocker dans geoserver, supprimer, modifier...
+
+14. Implémenter une option pour activer/désactiver les couches
+
+
+- Il faut ajouter ce code dans le fichier web.xml de geoserver
 
 ```xml
   <filter>
@@ -43,27 +117,3 @@ https://www.bingmapsportal.com/
     </init-param>
   </filter>
 ```
-
-1. Configurer et afficher une Map dans notre interface Web.
-  - Comment utiliser une library (OpenLayers)
-  - Base layers (OSM, Bing)
-  - Projection
-  - Comment centrer le vue d'une map en se basant sur des données d'une couche
-2. Collecter les données (Les couches `Layers` d'un espace de travail `Worjspace`) de geoserver api.
-  - Geoserver API
-  - Angular HTTP
-3. Afficher les couches `Layers` dans notre map.
-  - Comment préparer les données de l'API pour les afficher
-  - Affichage (Ajouter des layers dans notre map)
-  - Utiliser des techniques Angular pour créer un outil qui permet de Afficher/Cacher une couche
-4. Ajouter un outil pour afficher les informations d'une champ `Feature` sélectionné.
-  - Créer une interaction de type select
-  - Créer une popup
-  - Afficher les données d'un champ sélectionner dans une popup
-5. Ajouter une outil pour déssiner et ajouter les informations d'un champ `Feature` et stocker les résultats dans Geoserver.
-  - Créer une interaction de type draw
-  - Afficher une popup pour saisir des informations
-  - Stocker les données
-6. Ajouter un outil pour supprimer un champ `Feature` sélectionné.
-  - Créer une interaction de type select
-  - Supprimer (sans popup de confirmation)

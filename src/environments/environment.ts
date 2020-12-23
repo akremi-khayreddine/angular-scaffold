@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   geoserver: {
     url: 'http://localhost:8080/geoserver',
-    workspace: 'test',
+    workspace: 'formation',
     mapProjection: 'EPSG:3857',
   },
 };

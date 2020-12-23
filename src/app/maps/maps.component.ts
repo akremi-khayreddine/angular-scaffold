@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-import { Feature, Map as OlMap, Overlay } from 'ol';
+import { Feature, Map as OlMap } from 'ol';
 import GeometryType from 'ol/geom/GeometryType';
 import VectorLayer from 'ol/layer/Vector';
 
@@ -65,7 +65,7 @@ export class MapsComponent implements OnInit {
         this.apiLayers = layers;
         this.map = this.mapService.createMap();
         const defaultLayer = layers.find(
-          (l) => l.name === 'gis.osm_buildings_a_free_1'
+          (l) => l.name === 'TUN_adm1'
         ) as OurLayer;
         this.mapService.setCenterBasedOnLayer(defaultLayer);
         layers.forEach((layer) => {
