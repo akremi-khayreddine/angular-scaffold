@@ -25,6 +25,7 @@
     "@asymmetrik/ngx-leaflet": "^8.1.0",
     "leaflet": "^1.7.1",
     "leaflet-draw": "^1.0.4",
+    "mapbox-gl": "^2.0.1",
     "ol": "^6.4.3",
     "olgm": "^1.7.0",
     "proj4": "^2.6.3",

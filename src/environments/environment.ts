@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  mapBoxToken:
+    'pk.eyJ1Ijoia2hheXJlZGRpbmVha3JlbWkiLCJhIjoiY2tqMnlzbnA5MjZpNDMxbng2MGF3N2JybSJ9.MVvp93spzVcCvW37t-iQ-Q',
   geoserver: {
     url: 'http://localhost:8080/geoserver',
     workspace: 'formation',
