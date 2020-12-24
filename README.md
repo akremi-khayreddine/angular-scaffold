@@ -7,7 +7,7 @@ As a prerequisite you need:
 3.  [Visual Studio Code](https://code.visualstudio.com/)
 4.  [Geoserver](https://geoserver.org/)
 
-# Etapes:
+# Plan:
 
 1. Installer la librairie [OpenLayers](https://github.com/openlayers/openlayers):
 
