@@ -1,8 +1,33 @@
-<div class="app-toolbar">
-  <button fxShow.lt-md fxHide.gt-md (click)="sidenav.toggle()" mat-icon-button>
-    <mat-icon>menu</mat-icon>
-  </button>
-  <button mat-button color="primary" *ngIf="layoutService.isSidebarCollapsed$.value">
-    My APP
-  </button>
+<div class="app-toolbar w-full">
+  <div class="flex w-full justify-between items-center">
+    <div class="flex items-center">
+      <button
+        fxShow.lt-md
+        fxHide.gt-md
+        (click)="sidenav.toggle()"
+        mat-icon-button
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button
+        mat-button
+        color="primary"
+        *ngIf="layoutService.isSidebarCollapsed$.value"
+      >
+        <mat-icon>maps</mat-icon>
+        My APP
+      </button>
+    </div>
+    <div>
+      <mat-select style="width: 160px" [value]="mapService.baseLayer.name">
+        <mat-option
+          (click)="mapService.setBaseLayer(layer)"
+          [value]="layer.name"
+          *ngFor="let layer of baseLayers"
+        >
+          {{ layer.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
 </div>

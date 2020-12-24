@@ -4,7 +4,7 @@ import { MapOptions } from 'ol/PluggableMap';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import Style from 'ol/style/Style';
-import { MAP_OPTIONS } from './map-options';
+import { baseLayers, googleLayerDefault, MAP_OPTIONS } from './map-options';
 import GeometryType from 'ol/geom/GeometryType';
 import Draw from 'ol/interaction/Draw';
 import { OurLayer } from './geoserver.service';
@@ -20,11 +20,18 @@ export class MapService {
   private map: OlMap | undefined;
   public popupOverlay: Overlay | undefined;
   private mapProjection = environment.geoserver.mapProjection;
+  public baseLayer = baseLayers[0];
   constructor(@Inject(MAP_OPTIONS) private options: MapOptions) {}
 
   createMap(): OlMap | undefined {
     this.map = new OlMap(this.options);
     return this.map;
+  }
+
+  setBaseLayer(layer: any) {
+    this.baseLayer = layer;
+    this.map?.getLayers().removeAt(0);
+    this.map?.getLayers().insertAt(0, layer.value);
   }
 
   createSelectInteraction() {

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { baseLayers } from 'src/app/core/services/map-options';
+import { MapService } from 'src/app/core/services/map.service';
 import { LayoutService } from '../services/layout.service';
 
 @Component({
@@ -11,7 +13,13 @@ export class ToolbarComponent implements OnInit {
   @Input()
   sidenav!: MatSidenav;
 
-  constructor(public layoutService: LayoutService) {}
+  baseLayers = baseLayers;
 
-  ngOnInit(): void {}
+  constructor(
+    public layoutService: LayoutService,
+    public mapService: MapService
+  ) {}
+
+  ngOnInit(): void {
+  }
 }
