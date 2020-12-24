@@ -18,7 +18,7 @@ const routes: Routes = [
         (m) => m.MapsPreviewModule
       ),
   },
-];
+]; 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

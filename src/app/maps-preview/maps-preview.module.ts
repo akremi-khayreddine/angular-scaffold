@@ -12,4 +12,4 @@ import { MapsPreviewComponent } from './maps-preview.component';
     MapsPreviewRoutingModule
   ]
 })
-export class MapsPreviewModule { }
+export class MapsPreviewModule { } 
