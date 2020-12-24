@@ -5,21 +5,10 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import { all } from 'ol/loadingstrategy';
 import { HttpClient } from '@angular/common/http';
-import GeometryType from 'ol/geom/GeometryType';
 import Style from 'ol/style/Style';
 import { environment } from 'src/environments/environment';
 import Fill from 'ol/style/Fill';
-
-export interface OurLayer {
-  geoGSON: GeoJSON | null;
-  geometryType: GeometryType | null;
-  style: Style | null;
-  source: VectorSource | null;
-  layer: VectorLayer | null;
-  value: any;
-  name: string | null;
-  activated: boolean;
-}
+import { OurLayer } from '../models/OurLayer';
 
 @Injectable({
   providedIn: 'root',
