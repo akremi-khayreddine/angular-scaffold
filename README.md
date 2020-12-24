@@ -35,6 +35,7 @@ ng g m maps
 ```
 ng g c maps
 ```
+- Ajouter les routes angular, on va définir la navigation de notre application, si on navigue vers /maps: on charge le module maps créer, et ce module doit charger le composant maps qui contient le code Html (c'est le code qu'on voit dans le navigateur)
 
 6. Créer une service Angular pour gérer notre map
 
