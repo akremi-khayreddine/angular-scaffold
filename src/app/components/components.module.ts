@@ -17,9 +17,11 @@ const MATERIAL = [
 ];
 const FORMS = [FormsModule, ReactiveFormsModule];
 
+const COMPONENTS = [FeatureFormComponent, FeatureDetailsComponent];
+
 @NgModule({
-  declarations: [FeatureFormComponent, FeatureDetailsComponent],
-  imports: [CommonModule, ...MATERIAL, ...FORMS],
-  exports: [...MATERIAL, ...FORMS],
+  declarations: [],
+  imports: [CommonModule, ...MATERIAL, ...FORMS, ...COMPONENTS],
+  exports: [...MATERIAL, ...FORMS, ...COMPONENTS],
 })
 export class ComponentsModule {}
