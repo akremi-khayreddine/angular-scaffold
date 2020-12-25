@@ -1,15 +1,6 @@
 #map {
-  height: calc(100vh - var(--toolbar-height) - var(--navigation-height));
+  height: 100vh;
   width: 100%;
-}
-
-button.active {
-  background-color: blue;
-}
-
-.legend {
-  border-radius: 1rem;
-  opacity: 0.8;
 }
 
 .popup {
@@ -20,4 +11,11 @@ button.active {
   width: 300px;
   overflow: hidden;
   white-space: normal;
+}
+
+::ng-deep .ol-zoom {
+  right: 20px !important;
+  bottom: 20px !important;
+  top: auto;
+  left: auto;
 }

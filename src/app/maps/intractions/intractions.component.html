@@ -1,0 +1,57 @@
+<div class="absolute top-4 right-4">
+  <button
+    mat-mini-fab
+    color="primary"
+    class="mr-2"
+    [class.active]="currentInteraction?.key === 'select'"
+    (click)="onSelect.emit()"
+  >
+    <mat-icon>pan_tool</mat-icon>
+  </button>
+  <button
+    [class.active]="currentInteraction?.key === 'polygon'"
+    mat-mini-fab
+    color="primary"
+    class="mr-2"
+    [matMenuTriggerFor]="drawPolygonMenu"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button
+    [class.active]="currentInteraction?.key === 'point'"
+    mat-mini-fab
+    color="primary"
+    class="mr-2"
+    [matMenuTriggerFor]="drawPointMenu"
+  >
+    <mat-icon>add_location</mat-icon>
+  </button>
+  <button
+    [class.active]="currentInteraction?.key === 'delete'"
+    mat-mini-fab
+    color="primary"
+    (click)="onDelete.emit()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
+
+<mat-menu #drawPolygonMenu="matMenu">
+  <button
+    (click)="onDrawPolygon.emit(layer)"
+    *ngFor="let layer of layers"
+    mat-menu-item
+  >
+    {{ layer.name }}
+  </button>
+</mat-menu>
+
+<mat-menu #drawPointMenu="matMenu">
+  <button
+    (click)="onDrawPoint.emit(layer)"
+    *ngFor="let layer of layers"
+    mat-menu-item
+  >
+    {{ layer.name }}
+  </button>
+</mat-menu>

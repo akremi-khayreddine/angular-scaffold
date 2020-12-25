@@ -1,67 +1,55 @@
-<div id="map"></div>
-<div class="absolute top-4 right-4">
-  <button
-    mat-mini-fab
-    class="mr-2"
-    [class.active]="currentInteraction.key === 'select'"
-    (click)="onSelect()"
-  >
-    <mat-icon>pan_tool</mat-icon>
-  </button>
-  <button
-    [class.active]="currentInteraction.key === 'polygon'"
-    mat-mini-fab
-    class="mr-2"
-    [matMenuTriggerFor]="drawPolygonMenu"
-  >
-    <mat-icon>edit</mat-icon>
-  </button>
-  <button
-    [class.active]="currentInteraction.key === 'point'"
-    mat-mini-fab
-    class="mr-2"
-    [matMenuTriggerFor]="drawPointMenu"
-  >
-    <mat-icon>add_location</mat-icon>
-  </button>
-  <button
-    [class.active]="currentInteraction.key === 'delete'"
-    mat-mini-fab
-    (click)="onDelete()"
-  >
-    <mat-icon>delete</mat-icon>
-  </button>
-</div>
+<div (click)="close()" id="map"></div>
 
-<div class="absolute bottom-4 left-4 p-4 bg-white flex flex-col legend">
-  <mat-checkbox
-    *ngFor="let layer of layers$ | async"
-    (change)="toggle(layer, $event.checked)"
-    [checked]="layer.activated"
-  >
-    {{ layer.name }}
-  </mat-checkbox>
-</div>
+<button
+  (click)="mapService.addGeolocation()"
+  mat-mini-fab
+  class="absolute"
+  style="bottom: 80px; right: 15px"
+  color="primary"
+>
+  <mat-icon>my_location</mat-icon>
+</button>
 
-<mat-menu #drawPolygonMenu="matMenu">
+<button
+  [matMenuTriggerFor]="baseLayers"
+  mat-mini-fab
+  class="absolute"
+  style="bottom: 130px; right: 15px"
+  color="primary"
+>
+  <mat-icon>layers</mat-icon>
+</button>
+
+<mat-menu #baseLayers="matMenu">
   <button
-    (click)="onDrawPolygon(layer)"
-    *ngFor="let layer of layers$ | async"
+    *ngFor="let baseLayer of mapService.baseLayers"
+    (click)="mapService.setBaseLayer(baseLayer)"
     mat-menu-item
   >
-    {{ layer.name }}
+    {{ baseLayer.name }}
   </button>
 </mat-menu>
 
-<mat-menu #drawPointMenu="matMenu">
-  <button
-    (click)="onDrawPoint(layer)"
-    *ngFor="let layer of layers$ | async"
-    mat-menu-item
-  >
-    {{ layer.name }}
-  </button>
-</mat-menu>
+<app-intractions
+  [currentInteraction]="currentInteraction"
+  [layers]="layers$ | async"
+  (onSelect)="onSelect()"
+  (onDelete)="onDelete()"
+  (onDrawPolygon)="onDrawPolygon($event)"
+  (onDrawPoint)="onDrawPoint($event)"
+></app-intractions>
+
+<app-legend
+  [layers]="layers$ | async"
+  (toggle)="toggle($event.layer, $event.checked)"
+></app-legend>
+
+<app-feature-details
+  *ngIf="selectedData.layer && selectedData.feature"
+  [layer]="selectedData.layer"
+  [feature]="selectedData.feature"
+  (close)="close()"
+></app-feature-details>
 
 <!--
 <div #popup class="popup">

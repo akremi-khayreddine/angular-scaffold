@@ -1,0 +1,9 @@
+<div class="absolute bottom-4 left-4 p-4 bg-white flex flex-col legend">
+  <mat-checkbox
+    *ngFor="let layer of layers"
+    (change)="toggle.emit({ layer: layer, checked: $event.checked })"
+    [checked]="layer.activated"
+  >
+    {{ layer.name }}
+  </mat-checkbox>
+</div>

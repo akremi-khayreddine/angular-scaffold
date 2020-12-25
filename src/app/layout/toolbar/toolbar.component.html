@@ -18,8 +18,18 @@
         My APP
       </button>
     </div>
-    <div>
-      <mat-select style="width: 160px" [value]="mapService.baseLayer.name">
+    <div class="flex items-center">
+      <button
+        (click)="mapService.addGeolocation()"
+        mat-icon-button
+        class="mr-2"
+      >
+        <mat-icon>my_location</mat-icon>
+      </button>
+      <mat-select
+        style="width: 120px; font-size: 14px; font-weight: normal"
+        [value]="mapService.baseLayer.name"
+      >
         <mat-option
           (click)="mapService.setBaseLayer(layer)"
           [value]="layer.name"

@@ -37,6 +37,14 @@ export class MapsComponent implements OnInit {
     value: null,
   };
 
+  selectedData: {
+    layer: OurLayer | null;
+    feature: Feature | null;
+  } = {
+    layer: null,
+    feature: null,
+  };
+
   @ViewChild('popup') popup: ElementRef | undefined;
 
   get activatedLayers() {
@@ -99,7 +107,7 @@ export class MapsComponent implements OnInit {
           event.mapBrowserEvent.coordinate
         );
         */
-        this.openForm({ layer, feature, mode: 'show' });
+        this.selectedData = { layer, feature };
       } else {
         this.mapService.removeOverlay();
       }
@@ -161,6 +169,10 @@ export class MapsComponent implements OnInit {
     if (this.currentInteraction.value) {
       this.map?.removeInteraction(this.currentInteraction.value);
     }
+  }
+
+  close() {
+    this.selectedData = { layer: null, feature: null };
   }
 
   toggle(layer: any, checked: boolean) {
