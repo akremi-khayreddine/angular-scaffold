@@ -203,6 +203,8 @@ export class MapsComponent implements OnInit {
           .subscribe((result) => {
             options.layer.source?.refresh();
           });
+      } else {
+        options.layer.source?.refresh();
       }
     });
   }

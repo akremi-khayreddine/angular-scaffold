@@ -51,7 +51,7 @@ export const baseLayers = [
 
 export const view = new View({
   center: [0, 0],
-  zoom: 8,
+  zoom: 7,
 });
 
 export const mapOptions: MapOptions = {

@@ -1,9 +1,24 @@
 <div class="absolute bottom-4 left-4 p-4 bg-white flex flex-col legend">
-  <mat-checkbox
-    *ngFor="let layer of layers"
-    (change)="toggle.emit({ layer: layer, checked: $event.checked })"
-    [checked]="layer.activated"
-  >
-    {{ layer.name }}
-  </mat-checkbox>
+  <div *ngFor="let layer of layers" class="flex items-center">
+    <mat-checkbox
+      (change)="toggle.emit({ layer: layer, checked: $event.checked })"
+      [checked]="layer.activated"
+    >
+      {{ layer.name }}
+    </mat-checkbox>
+    <button [matMenuTriggerFor]="color" class="ml-3" mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #color="matMenu">
+      <div gdColumns="1fr 1fr 1fr" gdGap="16px" class="p-2">
+        <div
+          *ngFor="let style of styles"
+          [style.backgroundColor]="style.value.fill"
+          [style.borderColor]="style.value.stroke"
+          class="color cursor-pointer"
+          (click)="setStyle(layer, style)"
+        ></div>
+      </div>
+    </mat-menu>
+  </div>
 </div>

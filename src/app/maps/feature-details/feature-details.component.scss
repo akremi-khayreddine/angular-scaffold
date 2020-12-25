@@ -1,10 +1,18 @@
 .feature-details {
-    max-height: 90vh;
-    overflow-y: auto;
-    background-color: white;
-    padding: 24px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    width: 392px;
-    z-index: 12;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 392px;
+  z-index: 12;
+}
+
+.feature-details-header {
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-top: -24px;
+  margin-bottom: 24px;
+  padding: 24px;
 }
