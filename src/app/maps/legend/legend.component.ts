@@ -28,42 +28,42 @@ export class LegendComponent implements OnInit {
     {
       name: 'red',
       value: {
-        fill: 'rgba(229, 29, 29, 0.1)',
+        fill: 'rgba(229, 29, 29, 0.03)',
         stroke: 'rgb(229, 29, 29)',
       },
     },
     {
       name: 'green',
       value: {
-        fill: 'rgba(38, 211, 29, 0.1)',
+        fill: 'rgba(38, 211, 29, 0.03)',
         stroke: 'rgb(38, 211, 29)',
       },
     },
     {
       name: 'red',
       value: {
-        fill: 'rgba(211, 29, 202, 0.1)',
+        fill: 'rgba(211, 29, 202, 0.03)',
         stroke: 'rgb(211, 29, 202)',
       },
     },
     {
       name: 'red',
       value: {
-        fill: 'rgba(143, 16, 178, 0.1)',
+        fill: 'rgba(143, 16, 178, 0.03)',
         stroke: 'rgb(143, 16, 178)',
       },
     },
     {
       name: 'red',
       value: {
-        fill: 'rgba(226, 179, 38, 0.1)',
+        fill: 'rgba(226, 179, 38, 0.03)',
         stroke: 'rgb(226, 179, 38)',
       },
     },
     {
       name: 'red',
       value: {
-        fill: 'rgba(24, 155, 129, 0.1)',
+        fill: 'rgba(24, 155, 129, 0.03)',
         stroke: 'rgb(24, 155, 129)',
       },
     },
