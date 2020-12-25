@@ -1,6 +1,6 @@
 # Frontend Dev with Angular
 
-As a prerequisite you need:
+Prérequis:
 
 1.  [Node.js](https://nodejs.org/en/)
 2.  Angular CLI `npm i -g @angular/cli`
