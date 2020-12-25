@@ -17,7 +17,7 @@ npm install ol
 
 2. Créer un fichier `src/app/core/config/map-config.ts` pour mettre les configurations d'une map.
 
-- C'est une bonne idée de séparer tous ce qui est code de configuration de l'autre code. D'une part pour avoir toutes les configurations dans un seul emplacement (Si on veut changer du code on sait ou), d'autre part cette configuration peut etre réutilisable aprés.
+- C'est une bonne idée de séparer tout ce qui est code de configuration de l'autre code. D'une part pour avoir toutes les configurations dans un seul emplacement (Si on veut changer du code on sait ou), d'autre part cette configuration peut etre réutilisable aprés.
 
 3. Importer ce que nous avons besoin pour créer une map de la librairie OpenLayers et créer les configurations au fur et à mesure.
 4. Créer un module Angular avec angular-cli
