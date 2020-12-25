@@ -11,14 +11,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./leaflet/leaflet.module').then((m) => m.LeafletModule),
   },
-  {
-    path: 'maps-preview',
-    loadChildren: () =>
-      import('./maps-preview/maps-preview.module').then(
-        (m) => m.MapsPreviewModule
-      ),
-  },
-]; 
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
